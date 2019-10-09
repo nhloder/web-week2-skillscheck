@@ -51,7 +51,7 @@ function oddChecker(num){
 
 //////////////////PROBLEM 7////////////////////
 
-// Create a function called 'iLove' that takes in two parameters, name which will be a string  and love which will be a string of something you love. Have the function take the two parameters and retrun a string that says "NAMEPARAM loves LOVEPARAM" with the appropriate parameters in the string. e.g. "Bryan loves skateboarding"
+// Create a function called 'iLove' that takes in two parameters, name which will be a string  and love which will be a string of something you love. Have the function take the two parameters and return a string that says "NAMEPARAM loves LOVEPARAM" with the appropriate parameters in the string. e.g. "Bryan loves skateboarding"
 
 //Code Here
 function iLove(name, love){
@@ -98,14 +98,13 @@ greeter: function greeter(){
 // Code here
 function bigOrSmall(arr){
 	let answers = []
-	for (let i = arr.length ; i <= arr.length; i--){
-		if(arr.length[i] > 100){
+	for (let i = 0; i <= arr.length;i++){
+		if (arr[i] > 100){
 			answers.push('big')
-		}
-		else(arr.length[i] <= 100); {
+		}else if(arr[i] <= 100){
 			answers.push('small')
 		}
-	} return answers
+	}return answers
 }
 
 //////////////////PROBLEM 13////////////////////
@@ -113,6 +112,12 @@ function bigOrSmall(arr){
 // Create a function called 'arrayReverser' that takes in one parameter, arr. Inside of arrayReverser, create an empty array called 'reversed'. Using a for loop, loop over the passed in array in reverse and add each item to the new reversed array. Finally, return the new reversed array
 
 //Code Here
+function arrayReverser(arr){
+	reversed = []
+for (i = arr.length - 1; i>=0; i--){
+	reversed.push(arr[i])
+}return reversed
+}
 
 //////////////////PROBLEM 14 - 18 Setup////////////////////
 
@@ -125,32 +130,45 @@ const myNumbers = [3, 55, 788, 2, 1]
 // First, let's use .map to create a new array that doubles each number. Call the new array 'doubled'
 
 // Code Here
-
+const doubled = myNumbers.map(function(el,myNumbers,i){
+	return el * 2
+})
 //////////////////PROBLEM 15////////////////////
 
-// Now lets use .filter to only get the nubmer(s) greater than 100. Call the new array 'filtered'
+// Now lets use .filter to only get the number(s) greater than 100. Call the new array 'filtered'
 
 // Code Here
-
+let filtered = myNumbers.filter(function(el,i,arr){
+	if (el > 100){
+		return el
+	}
+})
 //////////////////PROBLEM 16////////////////////
 
 // Next up, reduce to get the total of the array. call the new array 'total'
 
 // Code Here
+let total = myNumbers.reduce(function(acc, el, arr){
+	return acc + el
+})
 
 //////////////////PROBLEM 17////////////////////
 
 // Last, lets use .forEach to find the index of each item in the array. First, create an empty array called myNumbersIndex. Next, using forEach, push each items index from the myNumbers array to the myNumbersIndex array
 
 // Code Here
-
+const myNumbersIndex = []
+function doThing(el,i,arr){
+myNumbersIndex.push(i)
+}
+myNumbers.forEach(doThing)
 //////////////////PROBLEM 18////////////////////
 
 // Did you know that George Foreman has five sons named George? Let's go ahead and change everyone's name in the notGeorge array to George using .map. Call the new array 'forTheLoveOfGeorge'
 const notGeorge = ['Louis', 'Ted', 'Bill', 'Sharon', 'Mark', 'Angela']
 
 // Code Here
-
+const forTheLoveOfGeorge = notGeorge.map(x => x = 'George')
 //////////////////PROBLEM 19////////////////////
 
 // Using the people array, let's filter out everyone that isn't our friend to a new array called 'enemies'. Use .filter()
@@ -164,9 +182,16 @@ const people = [
 ]
 
 // Code Here
-
+const enemies = people.filter(function(el,i,arr,){
+	if (el.friend === false){
+		return el
+	}
+})
 //////////////////PROBLEM 20////////////////////
 
 // Using the people array above, let's get a total of the awesomeLevel from all the people. Call the new array 'totallyAwesome'. Use .reduce()
 
 // Code Here
+let totallyAwesome = people.reduce(function(acc,el,i,arr){
+	return el.awesomeLevel + acc
+},0)
